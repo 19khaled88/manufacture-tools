@@ -7,7 +7,7 @@ import teamWork from '../../assets/people-with-teamwork.jpg'
 const BusinessSummary = () => {
   return (
     <div>
-      <p className="pt-16 text-3xl pb-10">Business Summary Page</p>
+      <p className="pt-16 text-3xl pb-10">Business Summary</p>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 gap-y-7 px-5 mx-auto container">
         <div className="avatar flex flex-col">
           <div className="w-40 mx-auto mask mask-squircle">
@@ -35,7 +35,7 @@ const BusinessSummary = () => {
           <span>30 types of products</span>
         </div>
       </div>
-      <div className="flex flex-col md:flex-col lg:flex-row container mx-auto px-10">
+      <div className="flex flex-col md:flex-col lg:flex-row container pt-9 mx-auto px-10">
         <div className="flex flex-col justify-center text-left">
           <h4 className="text-3xl text-slate-500">Teamwork</h4>
           <h4 className="text-3xl text-slate-500">Boost Creativity</h4>
