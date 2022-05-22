@@ -38,11 +38,11 @@ const BusinessSummary = () => {
       <div className="flex flex-col md:flex-col lg:flex-row container pt-9 mx-auto px-10">
         <div className="flex flex-col justify-center text-left">
           <h4 className="text-3xl text-slate-500">Teamwork</h4>
-          <h4 className="text-3xl text-slate-500">Boost Creativity</h4>
+          <h4 className="text-3xl text-slate-500">Creativity House</h4>
           <p className="pb-2 pt-4 text-slate-400">
-            eam spirit is the feeling of pride and loyalty that exists among the
-            members of a team and that makes them want their team to do well or
-            to be the best
+            Team spirit is the feeling of pride and loyalty that exists among
+            the members of a team and that makes them want their team to do well
+            or to be the best
           </p>
           <p className="text-slate-400 pb-8">
             Henry Ford's quote, "If everyone is moving forward together, then
