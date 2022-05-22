@@ -1,8 +1,16 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import 'react-toastify/dist/ReactToastify.css'
 import bicycle from '../../../assets/bicycleIcon.png'
+import auth from '../../DB/firebase.init'
+
 export const Navbar = ({ fixed }) => {
   const [navbarOpen, setNavbarOpen] = React.useState(false)
+  const [user] = useAuthState(auth)
+  console.log(user)
+  const navigate = useNavigate()
   return (
     <>
       <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-emerald-500">
@@ -54,13 +62,22 @@ export const Navbar = ({ fixed }) => {
                 </Link>
               </li>
               <li className="nav-item">
-                <a
+                <Link
                   className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                  href="#pablo"
+                  to="/purchase"
+                >
+                  <i className="fab fa-twitter text-lg leading-lg text-white opacity-75"></i>
+                  <span className="ml-2">Purchase</span>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                  to="/register"
                 >
                   <i className="fab fa-pinterest text-lg leading-lg text-white opacity-75"></i>
-                  <span className="ml-2">Pin</span>
-                </a>
+                  <span className="ml-2">Register</span>
+                </Link>
               </li>
             </ul>
           </div>

@@ -1,20 +1,23 @@
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
+import Register from './components/Auth/Register'
+import Dashboard from './components/Dashboard/Dashboard'
 import Home from './components/Home/Home'
-import OrderPage from './components/Order/OrderPage'
-import { Navbar } from './components/Shared/Navbar/Navbar'
+import Purchase from './components/Order/Purchase'
 
+import { Navbar } from './components/Shared/Navbar/Navbar'
 
 function App() {
   return (
-      <div className="App">
-        <Navbar></Navbar>
-          <Routes>
-            <Route path="/" element={<Home></Home>} />
-            <Route path="/order" element={<OrderPage></OrderPage>}/>
-          </Routes>
-      </div>
-   
+    <div className="App">
+      <Navbar></Navbar>
+      <Routes>
+        <Route path="/" element={<Home></Home>} />
+        <Route path="/purchase" element={<Purchase></Purchase>} />
+        <Route path="/dashboard" element={<Dashboard></Dashboard>} />
+        <Route path="/register" element={<Register></Register>} />
+      </Routes>
+    </div>
   )
 }
 
