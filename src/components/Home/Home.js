@@ -1,14 +1,15 @@
 import React from 'react'
 import Banner from './Banner'
-import BicycleParts from './BicycleParts'
+import BusinessSummary from './BusinessSummary'
+import Tools from './Tools'
 
 const Home = () => {
-  return (
+  return (   
     <>
       <Banner></Banner>
-      <BicycleParts></BicycleParts>
+      <Tools></Tools>
+      <BusinessSummary></BusinessSummary>
     </>
   )
 }
-
 export default Home
