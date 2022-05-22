@@ -1,8 +1,8 @@
 import React from 'react'
 import 'tw-elements'
-import bicycle1 from '../../assets/bicycle-tools-1.jpg'
+import bicycle3 from '../../assets/banner-accessories-1.jpg'
 import bicycle2 from '../../assets/bicycle-equipment-2.jpg'
-import bicycle3 from '../../assets/bicycle-professional-tool.png'
+import bicycle1 from '../../assets/bicycle-tools-1.jpg'
 const Banner = () => {
   return (
     <div
