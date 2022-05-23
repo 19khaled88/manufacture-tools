@@ -1,16 +1,21 @@
-import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { ToastContainer, toast } from 'react-toastify'
-import { useAuthState } from 'react-firebase-hooks/auth'
-import 'react-toastify/dist/ReactToastify.css'
-import bicycle from '../../../assets/bicycleIcon.png'
-import auth from '../../DB/firebase.init'
+import { signOut } from 'firebase/auth';
+import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { Link, useNavigate } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
+import bicycle from '../../../assets/bicycleIcon.png';
+import auth from '../../DB/firebase.init';
 
 export const Navbar = ({ fixed }) => {
   const [navbarOpen, setNavbarOpen] = React.useState(false)
   const [user] = useAuthState(auth)
-  console.log(user)
+  
   const navigate = useNavigate()
+
+  const logoutHandler=()=>{
+    signOut(auth)
+    navigate("/register")
+  }
   return (
     <>
       <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-emerald-500">
@@ -71,6 +76,12 @@ export const Navbar = ({ fixed }) => {
                 </Link>
               </li>
               <li className="nav-item">
+                {user ? 
+                  <button 
+                    onClick={logoutHandler}
+                    className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75">
+                  <span className="ml-2">Logout</span>
+                  </button> :
                 <Link
                   className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
                   to="/register"
@@ -78,6 +89,7 @@ export const Navbar = ({ fixed }) => {
                   <i className="fab fa-pinterest text-lg leading-lg text-white opacity-75"></i>
                   <span className="ml-2">Register</span>
                 </Link>
+              }
               </li>
             </ul>
           </div>

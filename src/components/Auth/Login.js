@@ -2,13 +2,13 @@ import { sendPasswordResetEmail } from 'firebase/auth'
 import React, { useRef, useState } from 'react'
 import {
   useAuthState,
-  useSignInWithEmailAndPassword,
+  useSignInWithEmailAndPassword
 } from 'react-firebase-hooks/auth'
 import { useForm } from 'react-hook-form'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import Loading from '../Shared/Loading.js'
 import auth from '../DB/firebase.init'
+import Loading from '../Shared/Loading.js'
 
 const Login = ({ signupPageRedirect }) => {
   const [loginError, setLoginError] = useState('')
