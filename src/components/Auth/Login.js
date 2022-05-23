@@ -28,15 +28,17 @@ const Login = ({ signupPageRedirect }) => {
     formState: { errors },
     handleSubmit,
   } = useForm()
-
+ let wrongLogin;
   if (error) {
-    setLoginError(error.message)
+    wrongLogin = error.message
+    // setLoginError(error.message)
     // return (
     //   <div>
     //     <p>Error: {error.message}</p>
     //   </div>
     // );
   }
+
   if (loading) {
     return <Loading />
     // return <p>Loading...</p>;
@@ -104,6 +106,7 @@ const Login = ({ signupPageRedirect }) => {
                 {errors.email.message}
               </span>
             )}
+            
           </label>
         </div>
 
@@ -137,6 +140,9 @@ const Login = ({ signupPageRedirect }) => {
           <span className="text-red-400">
             {' '}
             {loginError ? 'Error:' + loginError : ''}
+            {
+              wrongLogin ? wrongLogin : ''
+            }
           </span>
           <button className="btn btn-wide btn-xs" value="login" type="submit">
             Login
