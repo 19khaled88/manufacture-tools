@@ -42,8 +42,9 @@ const Signup = ({ loginPageRedirect }) => {
       setSignUpError('password not match')
     }
   }
+  let wrongSignIn
   if (error || updatingError) {
-    setSignUpError(error.message)
+    wrongSignIn = error.message
     // return (
     //   <div>
     //     <p>Error: {error.message}</p>
@@ -189,6 +190,7 @@ const Signup = ({ loginPageRedirect }) => {
           <span className="text-red-400">
             {' '}
             {signUpLoading ? 'Loading:' + signUpLoading : ''}
+            {wrongSignIn ? wrongSignIn : ''}
           </span>
           <button
             className="btn btn-wide btn-xs mt-2"
