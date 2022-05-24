@@ -1,6 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import ReactStars from 'react-rating-stars-component'
 import review from '../../assets/reviews.jpg'
 const Reviews = () => {
+  const [data, setData] = useState([])
+  useEffect(() => {
+    fetch('http://localhost:4000/rating')
+      .then((res) => res.json())
+      .then((data) => setData(data))
+  }, [])
   return (
     <>
       <div className="text-3xl pt-16 pb-10">Reviews</div>
@@ -21,144 +28,34 @@ const Reviews = () => {
         </div>
       </div>
       <div className="container px-20 mx-auto flex flex-col ">
-        <div className="flex flex-col lg:flex-row card card-side bg-base-100 shadow-xl my-4">
-          <div className="avatar pl-4">
-            <div className="w-36 h-36 lg:my-5 mx-auto  rounded-full">
-              <img src="https://api.lorem.space/image/face?hash=92310" />
+        {data.map((result) => (
+          <div
+            key={result._id}
+            className="flex flex-col lg:flex-row card card-side bg-base-100 shadow-xl my-4"
+          >
+            <div className="avatar pl-4">
+              <div className="w-36 h-36 lg:my-5 mx-auto  rounded-full">
+                <img src="https://api.lorem.space/image/face?hash=92310" />
+              </div>
             </div>
-          </div>
-          <div className="card-body">
-            <h2 className="card-title">Michael S.</h2>
-            <p className="text-justify">
-              This is my first time buying this product.my cousin recommended it
-              and it is worth it.i gifted it and the feedback for the same was
-              good. Worth the money. Got it on Amazon when it was discounted
-            </p>
-            <div className="card-actions justify-end">
-              <div className="rating">
-                <input
-                  type="radio"
-                  name="rating-2"
-                  className="mask mask-star-2 bg-orange-400"
-                />
-                <input
-                  type="radio"
-                  name="rating-2"
-                  className="mask mask-star-2 bg-orange-400"
-                  checked
-                />
-                <input
-                  type="radio"
-                  name="rating-2"
-                  className="mask mask-star-2 bg-orange-400"
-                />
-                <input
-                  type="radio"
-                  name="rating-2"
-                  className="mask mask-star-2 bg-orange-400"
-                />
-                <input
-                  type="radio"
-                  name="rating-2"
-                  className="mask mask-star-2 bg-orange-400"
+            <div className="card-body">
+              <h2 className="card-title">{result.user}</h2>
+              <p className="text-justify">{result.reviewData}</p>
+              <div className="card-actions justify-end">
+                <ReactStars
+                  value={result.currentRating}
+                  count={5}
+                  size={40}
+                  isHalf={true}
+                  emptyIcon={<i className="far fa-star"></i>}
+                  halfIcon={<i className="fa fa-star-half-alt"></i>}
+                  fullIcon={<i className="fa fa-star"></i>}
+                  activeColor="#ffd700"
                 />
               </div>
             </div>
           </div>
-        </div>
-        <div className="flex flex-col lg:flex-row card card-side bg-base-100 shadow-xl my-4">
-          <div className="avatar pl-4">
-            <div className="w-36 h-36 lg:my-5 mx-auto rounded-full">
-              <img src="https://api.lorem.space/image/face?hash=92310" />
-            </div>
-          </div>
-          <div className="card-body">
-            <h2 className="card-title">elahi</h2>
-            <p className="text-justify">
-              I am not satisfied with your company products. please inform to
-              you seal the product as much as possible or max. We have no idea
-              the product is used previously or not. All the product is open. At
-              least the company should closed the box and seal the box.
-            </p>
-            <div className="card-actions justify-end">
-              <div className="rating">
-                <input
-                  type="radio"
-                  name="rating-2"
-                  className="mask mask-star-2 bg-orange-400"
-                />
-                <input
-                  type="radio"
-                  name="rating-2"
-                  className="mask mask-star-2 bg-orange-400"
-                />
-                <input
-                  type="radio"
-                  name="rating-2"
-                  className="mask mask-star-2 bg-orange-400"
-                  checked
-                />
-                <input
-                  type="radio"
-                  name="rating-2"
-                  className="mask mask-star-2 bg-orange-400"
-                />
-                <input
-                  type="radio"
-                  name="rating-2"
-                  className="mask mask-star-2 bg-orange-400"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="flex flex-col lg:flex-row card card-side bg-base-100 shadow-xl my-4">
-          <div className="avatar pl-4">
-            <div className="w-36 h-36 lg:my-5 mx-auto rounded-full">
-              <img src="https://api.lorem.space/image/face?hash=92310" />
-            </div>
-          </div>
-          <div className="card-body">
-            <h2 className="card-title">Qaynat Khan</h2>
-            <p className="text-justify">
-              None of the bottles were sealed, the quantity was half not 120ml
-              that's mentioned on each bottle. The fragrance is good but not
-              worth paying so much for half the quantity received. Most of the
-              ppl in the review have mentioned abt the quantity being
-              inadequate, seems to be a deliberate mistake by the vendor.
-            </p>
-            <div className="card-actions justify-end">
-              <div className="rating">
-                <input
-                  type="radio"
-                  name="rating-2"
-                  className="mask mask-star-2 bg-orange-400"
-                />
-                <input
-                  type="radio"
-                  name="rating-2"
-                  className="mask mask-star-2 bg-orange-400"
-                  checked
-                />
-                <input
-                  type="radio"
-                  name="rating-2"
-                  className="mask mask-star-2 bg-orange-400"
-                />
-                <input
-                  type="radio"
-                  name="rating-2"
-                  className="mask mask-star-2 bg-orange-400"
-                />
-                <input
-                  type="radio"
-                  name="rating-2"
-                  className="mask mask-star-2 bg-orange-400"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
     </>
   )
