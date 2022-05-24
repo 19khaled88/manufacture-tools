@@ -2,8 +2,14 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 const Tool = ({ product, index }) => {
   const navigate = useNavigate()
-  const purchaseHandler = ({ price, min }) => {
-    navigate('/purchase', { state: { price: price, min: min } })
+  const purchaseHandler = ({ price, min,name,stock,desc }) => {
+    navigate('/purchase', { state: { 
+      name:name,
+      price: price, 
+      min: min,
+      stock:stock,
+      desc:desc
+    } })
   }
   const {
     product_name,
@@ -47,8 +53,11 @@ const Tool = ({ product, index }) => {
               className="btn btn-sm btn-accent w-1/3"
               onClick={() =>
                 purchaseHandler({
+                  name:product_name,
                   price: product_price,
                   min: product_min_order,
+                  stock:product_stock,
+                  desc:product_desc
                 })
               }
             >

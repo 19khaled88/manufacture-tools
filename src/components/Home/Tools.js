@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from 'react'
 import { useQuery } from 'react-query'
+import { useNavigate } from 'react-router-dom'
 import Loading from '../Shared/Loading'
 import Tool from './Tool'
 const Tools = () => {
@@ -14,6 +14,7 @@ const Tools = () => {
   if (isLoading) {
     return <Loading></Loading>
   }
+  
   return (
     <>
       <div className="flex flex-col">
