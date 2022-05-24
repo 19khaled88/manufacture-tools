@@ -76,144 +76,154 @@ const AddProduct = () => {
   // }
 
   return (
-    <div className="card w-96 bg-base-100 shadow-xl">
-      <div className="card-body">
-        <h2 className="card-title">Add Product</h2>
-        {productLoading === true ? <Loading /> : ''}
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
-          <label className="label pb-0">
-            <span className="label-text">Product Name:</span>
-          </label>
-          <input
-            ref={pName}
-            type="text"
-            placeholder="Type here"
-            className="input input-bordered input-primary input-sm w-full max-w-xs"
-            {...register('pName', {
-              required: {
-                value: true,
-                message: 'Product name required',
-              },
-            })}
-          />
-          {errors.pName?.type === 'required' && (
-            <span className="label-text-alt text-red-400">
-              {errors.pName.message}
-            </span>
-          )}
+    <>
+      <p className="text-2xl">Product Add Page</p>
+      <div className="card w-2/4 mx-auto bg-base-100 shadow-xl">
+        <div className="card-body">
+          <h2 className="card-title mx-auto">Add Product</h2>
+          {productLoading === true ? <Loading /> : ''}
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="flex flex-col mx-auto"
+          >
+            <label className="label pb-0">
+              <span className="label-text">Product Name:</span>
+            </label>
+            <input
+              ref={pName}
+              type="text"
+              placeholder="Type here"
+              className="input input-bordered input-primary input-sm w-full max-w-xs"
+              {...register('pName', {
+                required: {
+                  value: true,
+                  message: 'Product name required',
+                },
+              })}
+            />
+            {errors.pName?.type === 'required' && (
+              <span className="label-text-alt text-red-400">
+                {errors.pName.message}
+              </span>
+            )}
 
-          <label className="label pb-0 pt-1">
-            <span className="label-text">Description:</span>
-          </label>
-          <textarea
-            ref={pDesc}
-            className="textarea textarea-primary w-full max-w-xs"
-            placeholder="Bio"
-            {...register('pDesc', {
-              required: {
-                value: true,
-                message: 'Product description required',
-              },
-            })}
-          />
-          {errors.pDesc?.type === 'required' && (
-            <span className="label-text-alt text-red-400">
-              {errors.pDesc.message}
-            </span>
-          )}
+            <label className="label pb-0 pt-1">
+              <span className="label-text">Description:</span>
+            </label>
+            <textarea
+              ref={pDesc}
+              className="textarea textarea-primary w-full max-w-xs"
+              placeholder="Bio"
+              {...register('pDesc', {
+                required: {
+                  value: true,
+                  message: 'Product description required',
+                },
+              })}
+            />
+            {errors.pDesc?.type === 'required' && (
+              <span className="label-text-alt text-red-400">
+                {errors.pDesc.message}
+              </span>
+            )}
 
-          <label className="label pb-0 pt-1">
-            <span className="label-text">Price:</span>
-          </label>
-          <input
-            ref={pPrice}
-            type="number"
-            placeholder="Type here"
-            className="input input-bordered input-primary input-sm w-full max-w-xs"
-            {...register('pPrice', {
-              required: {
-                value: true,
-                message: 'Product price required',
-              },
-            })}
-          />
-          {errors.pPrice?.type === 'required' && (
-            <span className="label-text-alt text-red-400">
-              {errors.pPrice.message}
-            </span>
-          )}
+            <label className="label pb-0 pt-1">
+              <span className="label-text">Price:</span>
+            </label>
+            <input
+              ref={pPrice}
+              type="number"
+              placeholder="Type here"
+              className="input input-bordered input-primary input-sm w-full max-w-xs"
+              {...register('pPrice', {
+                required: {
+                  value: true,
+                  message: 'Product price required',
+                },
+              })}
+            />
+            {errors.pPrice?.type === 'required' && (
+              <span className="label-text-alt text-red-400">
+                {errors.pPrice.message}
+              </span>
+            )}
 
-          <label className="label pb-0 pt-1">
-            <span className="label-text">Stock</span>
-          </label>
-          <input
-            ref={pStock}
-            type="number"
-            placeholder="Type here"
-            className="input input-bordered input-primary input-sm w-full max-w-xs"
-            {...register('pStock', {
-              required: {
-                value: true,
-                message: 'Product Stock value required',
-              },
-            })}
-          />
-          {errors.pStock?.type === 'required' && (
-            <span className="label-text-alt text-red-400">
-              {errors.pStock.message}
-            </span>
-          )}
+            <label className="label pb-0 pt-1">
+              <span className="label-text">Stock</span>
+            </label>
+            <input
+              ref={pStock}
+              type="number"
+              placeholder="Type here"
+              className="input input-bordered input-primary input-sm w-full max-w-xs"
+              {...register('pStock', {
+                required: {
+                  value: true,
+                  message: 'Product Stock value required',
+                },
+              })}
+            />
+            {errors.pStock?.type === 'required' && (
+              <span className="label-text-alt text-red-400">
+                {errors.pStock.message}
+              </span>
+            )}
 
-          <label className="label pb-0 pt-1">
-            <span className="label-text">Minimum Order:</span>
-          </label>
-          <input
-            ref={pMinOrder}
-            type="number"
-            placeholder="Type here"
-            className="input input-bordered input-primary input-sm w-full max-w-xs"
-            {...register('pMinOrder', {
-              required: {
-                value: true,
-                message: 'Product Minimum order required',
-              },
-            })}
-          />
-          {errors.pMinOrder?.type === 'required' && (
-            <span className="label-text-alt text-red-400">
-              {errors.pMinOrder.message}
-            </span>
-          )}
+            <label className="label pb-0 pt-1">
+              <span className="label-text">Minimum Order:</span>
+            </label>
+            <input
+              ref={pMinOrder}
+              type="number"
+              placeholder="Type here"
+              className="input input-bordered input-primary input-sm w-full max-w-xs"
+              {...register('pMinOrder', {
+                required: {
+                  value: true,
+                  message: 'Product Minimum order required',
+                },
+              })}
+            />
+            {errors.pMinOrder?.type === 'required' && (
+              <span className="label-text-alt text-red-400">
+                {errors.pMinOrder.message}
+              </span>
+            )}
 
-          <label className="label pb-0 pt-1">
-            <span className="label-text">Image</span>
-          </label>
-          <input
-            ref={pImage}
-            type="file"
-            placeholder="Type here"
-            className="input input-bordered input-primary input-sm w-full max-w-xs"
-            {...register('pImage', {
-              required: {
-                value: true,
-                message: 'Product Image required',
-              },
-            })}
-          />
-          {errors.pImage?.type === 'required' && (
-            <span className="label-text-alt text-red-400">
-              {errors.pImage.message}
-            </span>
-          )}
+            <label className="label pb-0 pt-1">
+              <span className="label-text">Image</span>
+            </label>
+            <input
+              ref={pImage}
+              type="file"
+              placeholder="Type here"
+              className="input input-bordered input-primary input-sm w-full max-w-xs"
+              {...register('pImage', {
+                required: {
+                  value: true,
+                  message: 'Product Image required',
+                },
+              })}
+            />
+            {errors.pImage?.type === 'required' && (
+              <span className="label-text-alt text-red-400">
+                {errors.pImage.message}
+              </span>
+            )}
 
-          <div className="card-actions justify-end">
-            <button value="submit" type="submit" className="btn btn-primary">
-              Submit
-            </button>
-          </div>
-        </form>
+            <div className="card-actions justify-end pt-6">
+              <button
+                value="submit"
+                type="submit"
+                className="btn btn-sm btn-primary"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 

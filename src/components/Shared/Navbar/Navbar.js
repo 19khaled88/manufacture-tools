@@ -1,5 +1,5 @@
 import { signOut } from 'firebase/auth'
-import React from 'react'
+import React, { useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { Link, useNavigate } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import bicycle from '../../../assets/bicycleIcon.png'
 import auth from '../../DB/firebase.init'
 export const Navbar = ({ fixed }) => {
-  const [navbarOpen, setNavbarOpen] = React.useState(false)
+  const [navbarOpen, setNavbarOpen] = useState(false)
   const [user] = useAuthState(auth)
   const navigate = useNavigate()
 
@@ -37,7 +37,24 @@ export const Navbar = ({ fixed }) => {
               type="button"
               onClick={() => setNavbarOpen(!navbarOpen)}
             >
-              <i className="fas fa-bars"></i>
+              {navbarOpen === false ? (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              ) : (
+                'X'
+              )}
             </button>
           </div>
           <div

@@ -26,7 +26,8 @@ const MyReviews = () => {
   }
   return (
     <div className="">
-      <div className="card w-2/4 bg-base-100 shadow-xl">
+      <p className="text-2xl">My Review</p>
+      <div className="card w-2/4 mx-auto bg-base-100 shadow-xl">
         <div className="card-body w-full">
           <h2 className="card-title ">Drop What in your mind</h2>
           <input

@@ -13,16 +13,40 @@ const Purchase = () => {
   const [total, setTotal] = useState(
     parseInt(state?.price) * parseInt(state?.min),
   )
+  const [actualOrder, setActualOrder] = useState('')
   const [error, setError] = useState('')
 
   const orderPlaceHandler = (e) => {
     e.preventDefault()
+    const id = state?.id
+    const product = state?.name
+    const unChangedOrder = state?.min
     const ordered = order.current.value
     const price = total
-    const phoneNmber = phone.current.value
+    const phoneNumber = phone.current.value
     const address = add.current.value
     const mail = loginUser?.email
-    const value = { ordered, price, mail, phoneNmber, address }
+    const name = loginUser?.displayName
+    let leftStock = []
+    if (actualOrder) {
+      leftStock.push(parseInt(state?.stock) - actualOrder)
+    } else if (unChangedOrder) {
+      leftStock.push(state?.stock - unChangedOrder)
+    }
+
+    const stockValue = leftStock[0]
+    const value = {
+      id,
+      product,
+      ordered,
+      price,
+      mail,
+      phoneNumber,
+      address,
+      name,
+      stockValue,
+    }
+
     fetch('http://localhost:4000/placceOrder', {
       method: 'POST',
       headers: {
@@ -54,6 +78,7 @@ const Purchase = () => {
       const color = document.getElementsByClassName('orderField')[0]
       const button = document.getElementsByClassName('buyButton')[0]
       setTotal(parseInt(state?.price) * e.target.value)
+      setActualOrder(e.target.value)
       setError('')
       button.disabled = false
       color.style.borderColor = 'white'
