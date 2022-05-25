@@ -10,7 +10,7 @@ const Reviews = () => {
   }, [])
   return (
     <>
-      <div className="text-3xl pt-16 pb-10">Reviews</div>
+      <div className="text-3xl pb-10" style={{paddingTop:"700px"}}>Reviews</div>
       <div className="flex flex-col lg:flex-row container px-5 mx-auto">
         <img src={review} alt="" />
         <div className="flex flex-col justify-center items-center text-justify">

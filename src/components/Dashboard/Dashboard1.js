@@ -33,7 +33,7 @@ const Dashboard1 = () => {
         </div>
         <div class="drawer-side">
           <label for="my-drawer-3" class="drawer-overlay lg:hidden"></label>
-          <ul class="menu p-4 lg:hidden w-80 bg-base-100">
+          <ul class="menu p-4 lg:hidden w-64 bg-base-100">
             <li>
               <Link to="/dashboard">My Profile</Link>
             </li>
@@ -47,8 +47,8 @@ const Dashboard1 = () => {
               <Link to="/dashboard/addproduct">Add product</Link>
             </li>
           </ul>
-          <div class="hidden lg:flex lg:flex-row w-62 pt-20 lg:inline">
-            <div className="w-1/3">
+          <div class="container mx-auto hidden lg:flex lg:flex-row w-full pt-20 lg:inline">
+            <div className="w-72">
               <ul class="menu flex  flex-col">
                 <li className="border-2">
                   <Link to="/dashboard">My Profile</Link>
@@ -64,7 +64,7 @@ const Dashboard1 = () => {
                 </li>
               </ul>
             </div>
-            <div className="px-8 border-2 w-2/3 hidden lg:inline">
+            <div className="px-8 border-2 w-full hidden lg:inline">
               <Outlet></Outlet>
             </div>
           </div>
