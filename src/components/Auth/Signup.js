@@ -2,13 +2,13 @@ import React, { useRef, useState } from 'react'
 import {
   useAuthState,
   useCreateUserWithEmailAndPassword,
-  useUpdateProfile,
+  useUpdateProfile
 } from 'react-firebase-hooks/auth'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import Loading from '../Shared/Loading.js'
 import auth from '../DB/firebase.init'
+import Loading from '../Shared/Loading.js'
 
 const Signup = ({ loginPageRedirect }) => {
   const [signUpError, setSignUpError] = useState('')
@@ -57,7 +57,7 @@ const Signup = ({ loginPageRedirect }) => {
     // return (<p>Loading...</p>)
   }
   if (user) {
-    navigate('/')
+    navigate('/dashboard')
     // return (
     //   <div>
     //     <p>Registered User:</p>

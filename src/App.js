@@ -1,10 +1,11 @@
+import { QueryClient, QueryClientProvider } from 'react-query'
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import Register from './components/Auth/Register'
 import RequiredAuth from './components/Auth/RequiredAuth'
 import AddProduct from './components/Dashboard/AddProduct'
+import Dashboard1 from './components/Dashboard/Dashboard1'
 // import Dashboard from './components/Dashboard/Dashboard'
-
 import MyOrders from './components/Dashboard/MyOrders'
 import MyProfile from './components/Dashboard/MyProfile'
 import MyReviews from './components/Dashboard/MyReviews'
@@ -12,9 +13,9 @@ import Home from './components/Home/Home'
 import Notfound from './components/Notfound/Notfound'
 import Purchase from './components/Order/Purchase'
 import { Navbar } from './components/Shared/Navbar/Navbar'
-import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
-import Dashboard1 from './components/Dashboard/Dashboard1'
+
 const queryClient = new QueryClient()
+
 function App() {
   return (
     <QueryClientProvider client={queryClient}>

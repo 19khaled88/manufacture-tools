@@ -9,6 +9,7 @@ import image from '../../assets/download (1).png';
 import image1 from '../../assets/download.png';
 import trophy from '../../assets/trophy-cup-award.jpg';
 
+
 const Winner = (props) => {
     const [width, height] = useWindowSize()
   return (
@@ -20,7 +21,7 @@ const Winner = (props) => {
         
       />
 
-      <div className='absolute inset-x-0 top-0 pt-16 h-auto mb-24 flex flex-row w-full mx-auto   container'>
+      <div className='absolute inset-x-0 top-0 pt-16 h-auto mb-24 flex lg:flex-row flex-col w-full mx-auto   container'>
        
         <div className='flex-1'>
           <div className='relative mb-16'>
@@ -53,7 +54,7 @@ const Winner = (props) => {
           
         </div>
       
-        <div className='flex-1 flex flex-row text-left'>
+        <div className='flex-1 flex flex-col lg:flex-row text-left'>
           <div className='flex flex-col'>
             <p className='text-2xl text-amber-400'>Awards</p>
             <p>Award always matters organization like us. We really deserve for this. Now it's time for us. Our journey will not end after this</p>

@@ -5,7 +5,7 @@ const Benefits = () => {
   return (
     <div>
         <p className='text-3xl'>Benefit and offers</p>
-        <div className='flex flex-row'>
+        <div className='flex flex-col lg:flex-row '>
             <div className='flex-1'>
                 <img src={benefit} alt='' />
             </div>

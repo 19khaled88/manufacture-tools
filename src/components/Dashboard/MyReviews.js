@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
-import ReactStars from 'react-rating-stars-component'
 import { useAuthState } from 'react-firebase-hooks/auth'
+import ReactStars from 'react-rating-stars-component'
 import auth from '../DB/firebase.init'
 const MyReviews = () => {
   const review = useRef('')
@@ -9,11 +9,15 @@ const MyReviews = () => {
   const ratingChanged = (newRating) => {
     setCurrentRating(newRating)
   }
-  const reviewHandler = () => {
+  const reviewHandler = async(e) => {
     const reviewData = review.current.value
     const user = loginUser?.displayName
     const value = { reviewData, currentRating, user }
-    fetch('http://localhost:4000/rating', {
+
+    const reset = () => {
+      reviewData.current.value = "";
+    };
+    await  fetch('http://localhost:4000/rating', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -21,7 +25,10 @@ const MyReviews = () => {
       body: JSON.stringify(value),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        console.log(data)
+       reset();
+      })
       .catch((error) => console.log(error))
   }
   return (
