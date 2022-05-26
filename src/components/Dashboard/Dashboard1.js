@@ -1,6 +1,13 @@
 import React from 'react'
 import { Link, Outlet } from 'react-router-dom'
+import useAdmin from '../CustorHook/useAdmin'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import auth from '../DB/firebase.init'
 const Dashboard1 = () => {
+  const [user] = useAuthState(auth)
+
+  const [admin] = useAdmin(user)
+
   return (
     <div>
       <div class="drawer">
@@ -49,9 +56,11 @@ const Dashboard1 = () => {
             <li>
               <Link to="/dashboard/manageOrder">Manage Orders</Link>
             </li>
-            <li>
-              <Link to="/dashboard/users">Users</Link>
-            </li>
+            {admin && (
+              <li>
+                <Link to="/dashboard/users">Users</Link>
+              </li>
+            )}
             <li>
               <Link to="/dashboard/manageProduct">Manage Product</Link>
             </li>
@@ -74,9 +83,11 @@ const Dashboard1 = () => {
                 <li className="border-2">
                   <Link to="/dashboard/manageOrder">Manage Orders</Link>
                 </li>
-                <li className="border-2">
-                  <Link to="/dashboard/users">Users</Link>
-                </li>
+                {admin && (
+                  <li className="border-2">
+                    <Link to="/dashboard/users">Users</Link>
+                  </li>
+                )}
                 <li className="border-2">
                   <Link to="/dashboard/manageProduct">Manage Product</Link>
                 </li>

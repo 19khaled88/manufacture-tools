@@ -16,21 +16,26 @@ const Users = () => {
   if (isLoading) {
     return <Loading></Loading>
   }
-  console.log(users)
+
   const makeAdminHandler = (email) => {
     fetch(`http://localhost:4000/admin/${email}`, {
       method: 'PUT',
       headers: {
+        'content-type': 'application/json',
         authorization: `Bearer ${localStorage.getItem('webToken')}`,
       },
     })
       .then((res) => {
+        if (res.status === 200) {
+          refetch()
+        }
         if (res.status === 403) {
           toast.error('Admin make failed')
         }
         return res.json()
       })
       .then((data) => {
+        console.log(data)
         if (data.modifiedCount > 0) {
           refetch()
           toast('New Admin made')

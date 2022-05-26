@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 const useRegister = (user) => {
   const [userToken, setUserToken] = useState('')
+
   useEffect(() => {
     const email = user?.user?.email
     const currentUser = { email: email }
@@ -15,12 +16,13 @@ const useRegister = (user) => {
       })
         .then((res) => res.json())
         .then((data) => {
-          const token = data.webToken
+          const token = data.token
           localStorage.setItem('webToken', token)
           setUserToken(token)
         })
     }
   }, [user])
+
   return [userToken]
 }
 

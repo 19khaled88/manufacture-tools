@@ -17,6 +17,7 @@ import Notfound from './components/Notfound/Notfound'
 import Purchase from './components/Order/Purchase'
 import { Navbar } from './components/Shared/Navbar/Navbar'
 import 'react-toastify/dist/ReactToastify.css'
+import RequiredAdmin from './components/Auth/requiredAdmin'
 const queryClient = new QueryClient()
 
 function App() {
@@ -48,7 +49,14 @@ function App() {
             <Route path="addproduct" element={<AddProduct></AddProduct>} />
             <Route path="myorders" element={<MyOrders></MyOrders>} />
             <Route path="manageOrder" element={<ManageOrders></ManageOrders>} />
-            <Route path="users" element={<Users></Users>} />
+            <Route
+              path="users"
+              element={
+                <RequiredAdmin>
+                  <Users></Users>
+                </RequiredAdmin>
+              }
+            />
             <Route
               path="manageProduct"
               element={<ManageProduct></ManageProduct>}

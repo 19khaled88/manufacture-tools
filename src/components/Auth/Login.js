@@ -29,6 +29,7 @@ const Login = ({ signupPageRedirect }) => {
     formState: { errors },
     handleSubmit,
   } = useForm()
+
   const [userToken] = useRegister(user)
   useEffect(() => {
     if (userToken) {
