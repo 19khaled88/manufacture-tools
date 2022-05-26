@@ -9,15 +9,15 @@ const MyReviews = () => {
   const ratingChanged = (newRating) => {
     setCurrentRating(newRating)
   }
-  const reviewHandler = async(e) => {
+  const reviewHandler = async (e) => {
     const reviewData = review.current.value
     const user = loginUser?.displayName
     const value = { reviewData, currentRating, user }
 
     const reset = () => {
-      reviewData.current.value = "";
-    };
-    await  fetch('http://localhost:4000/rating', {
+      reviewData.current.value = ''
+    }
+    await fetch('https://enigmatic-ravine-64460.herokuapp.com/rating', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -27,7 +27,7 @@ const MyReviews = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data)
-       reset();
+        reset()
       })
       .catch((error) => console.log(error))
   }

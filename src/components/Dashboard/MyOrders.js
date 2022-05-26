@@ -8,12 +8,15 @@ const MyOrders = () => {
   const navigate = useNavigate()
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost:4000/order?user=${user?.email}`, {
-        method: 'GET',
-        headers: {
-          authorization: `Bearer ${localStorage.getItem('webToken')}`,
+      fetch(
+        `https://enigmatic-ravine-64460.herokuapp.com/order?user=${user?.email}`,
+        {
+          method: 'GET',
+          headers: {
+            authorization: `Bearer ${localStorage.getItem('webToken')}`,
+          },
         },
-      })
+      )
         .then((res) => {
           if (res.status === 401) {
             navigate('/home')

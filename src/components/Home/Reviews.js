@@ -1,19 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import ReactStars from 'react-rating-stars-component';
-import review from '../../assets/reviews.jpg';
-import './home.css';
+import React, { useEffect, useState } from 'react'
+import ReactStars from 'react-rating-stars-component'
+import review from '../../assets/reviews.jpg'
+import './home.css'
 
 const Reviews = () => {
   const [data, setData] = useState([])
   useEffect(() => {
-    fetch('http://localhost:4000/rating')
+    fetch('https://enigmatic-ravine-64460.herokuapp.com/rating')
       .then((res) => res.json())
       .then((data) => setData(data))
   }, [])
-  
+
   return (
-    <div className='reviewClass'>
-      <div className="text-3xl pb-10 " style={{paddingTop:"700px"}}>Reviews</div>
+    <div className="reviewClass">
+      <div className="text-3xl pb-10 " style={{ paddingTop: '700px' }}>
+        Reviews
+      </div>
       <div className="flex flex-col lg:flex-row container px-5 mx-auto">
         <img src={review} alt="" />
         <div className="flex flex-col justify-center items-center text-justify">

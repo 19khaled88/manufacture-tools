@@ -6,15 +6,16 @@ import Tool from './Tool'
 const Tools = () => {
   const [tools, setTools] = useState([])
   const navigate = useNavigate()
- 
 
   const { data: products, isLoading } = useQuery('products', () =>
-    fetch('http://localhost:4000/product').then((res) => res.json()),
+    fetch('https://enigmatic-ravine-64460.herokuapp.com/product').then((res) =>
+      res.json(),
+    ),
   )
   if (isLoading) {
     return <Loading></Loading>
   }
-  
+
   return (
     <>
       <div className="flex flex-col">

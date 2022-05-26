@@ -47,7 +47,7 @@ const Purchase = () => {
       stockValue,
     }
 
-    fetch('http://localhost:4000/placceOrder', {
+    fetch('https://enigmatic-ravine-64460.herokuapp.com/placceOrder', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
