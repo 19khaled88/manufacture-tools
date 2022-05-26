@@ -19,7 +19,7 @@ const MyProfile = () => {
     const linRef = linkedin.current.value
     const email = user?.email
     const value = { eduRef, locRef, phoRef, linRef, email }
-    fetch('http://localhost:5000/updateProfile', {
+    fetch('https://enigmatic-ravine-64460.herokuapp.com/updateProfile', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -29,12 +29,15 @@ const MyProfile = () => {
     // .then((data) => setProfileData(data))
   }
   useEffect(() => {
-    fetch(`http://localhost:5000/updateProfile/${user?.email}`, {
-      method: 'GET',
-      headers: {
-        'content-type': 'application/json',
+    fetch(
+      `https://enigmatic-ravine-64460.herokuapp.com/updateProfile/${user?.email}`,
+      {
+        method: 'GET',
+        headers: {
+          'content-type': 'application/json',
+        },
       },
-    })
+    )
       .then((res) => res.json())
       .then((data) => setProfileData(data))
   }, [user?.email])

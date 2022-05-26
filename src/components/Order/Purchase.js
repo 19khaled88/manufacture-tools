@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import auth from '../DB/firebase.init'
 const Purchase = () => {
   const [loginUser] = useAuthState(auth)
@@ -27,6 +28,7 @@ const Purchase = () => {
     const address = add.current.value
     const mail = loginUser?.email
     const name = loginUser?.displayName
+    const payment = 'not paid'
     let leftStock = []
     if (actualOrder) {
       leftStock.push(parseInt(state?.stock) - actualOrder)
@@ -45,6 +47,7 @@ const Purchase = () => {
       address,
       name,
       stockValue,
+      payment,
     }
 
     fetch('https://enigmatic-ravine-64460.herokuapp.com/placceOrder', {
@@ -58,7 +61,7 @@ const Purchase = () => {
       .then((data) => {
         navigate('/dashboard/myorders')
       })
-      .catch((error) => console.log(error))
+      .catch((error) => toast(error.message))
   }
   const onChangeHandler = (e) => {
     if (e.target.value > parseInt(state?.stock)) {
