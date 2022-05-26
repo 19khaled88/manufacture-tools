@@ -16,7 +16,7 @@ import Home from './components/Home/Home'
 import Notfound from './components/Notfound/Notfound'
 import Purchase from './components/Order/Purchase'
 import { Navbar } from './components/Shared/Navbar/Navbar'
-
+import 'react-toastify/dist/ReactToastify.css'
 const queryClient = new QueryClient()
 
 function App() {

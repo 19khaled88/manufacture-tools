@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useQuery } from 'react-query'
+import { toast } from 'react-toastify'
 import Loading from '../Shared/Loading'
 import User from './User'
 
 const Users = () => {
-  const { data: users, isLoading } = useQuery('users', () =>
+  const { data: users, isLoading, refetch } = useQuery('users', () =>
     fetch('http://localhost:4000/users', {
       method: 'GET',
       headers: {
@@ -15,12 +16,30 @@ const Users = () => {
   if (isLoading) {
     return <Loading></Loading>
   }
+  console.log(users)
+  const makeAdminHandler = (email) => {
+    fetch(`http://localhost:4000/admin/${email}`, {
+      method: 'PUT',
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('webToken')}`,
+      },
+    })
+      .then((res) => {
+        if (res.status === 403) {
+          toast.error('Admin make failed')
+        }
+        return res.json()
+      })
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          refetch()
+          toast('New Admin made')
+        }
+      })
+  }
   return (
     <div className="text-2xl">
       <p className="text-2xl">Total Users:{users.length}</p>
-      {/* {users.map((user, index) => (
-        <User user={user} index={index}></User>
-      ))} */}
       <div class="overflow-x-auto">
         <table class="table w-full">
           <thead>
@@ -37,14 +56,20 @@ const Users = () => {
                 <th>{index + 1}</th>
                 <td>{user.email}</td>
                 <td>
-                  {' '}
-                  <button class="btn btn-active btn-sm btn-accent">
-                    Make Admin
-                  </button>
+                  {user.role === 'admin' ? (
+                    'Admin'
+                  ) : (
+                    <button
+                      onClick={() => makeAdminHandler(user.email)}
+                      class="btn btn-active btn-sm btn-accent"
+                    >
+                      Make Admin
+                    </button>
+                  )}
                 </td>
                 <td>
                   {' '}
-                  <button class="btn btn-active btn-sm btn-warning">
+                  <button class="btn btn-active btn-sm bg-red-400 border-0">
                     Delete
                   </button>
                 </td>
