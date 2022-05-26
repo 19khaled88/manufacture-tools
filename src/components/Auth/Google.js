@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth'
+import { useNavigate } from 'react-router-dom'
+import useRegister from '../CustorHook/useRegister'
 import auth from '../DB/firebase.init'
 import Loading from '../Shared/Loading.js'
 const Google = () => {
@@ -14,7 +16,8 @@ const Google = () => {
   //   //   </div>
   //   // )
   // }
-
+  const navigate = useNavigate()
+  const [userToken] = useRegister(user)
   useEffect(() => {
     // setGoogleError('Error in login with google')
     const timer = setTimeout(() => {
@@ -22,12 +25,15 @@ const Google = () => {
     }, 3000)
     return () => clearTimeout(timer)
   }, [error])
-  
+
   if (loading) {
     return <Loading />
   }
-  if (user) {
-    console.log(user)
+  // if (user) {
+  //   console.log(user)
+  // }
+  if (userToken) {
+    navigate('/dashboard')
   }
   return (
     <>
@@ -38,7 +44,9 @@ const Google = () => {
       >
         Login with google
       </button>
-      <span className="text-red-600">{error ? 'Error in login with google' : ''}</span>
+      <span className="text-red-600">
+        {error ? 'Error in login with google' : ''}
+      </span>
     </>
   )
 }

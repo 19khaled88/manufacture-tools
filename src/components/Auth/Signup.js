@@ -2,11 +2,12 @@ import React, { useRef, useState } from 'react'
 import {
   useAuthState,
   useCreateUserWithEmailAndPassword,
-  useUpdateProfile
+  useUpdateProfile,
 } from 'react-firebase-hooks/auth'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import useRegister from '../CustorHook/useRegister'
 import auth from '../DB/firebase.init'
 import Loading from '../Shared/Loading.js'
 
@@ -30,18 +31,8 @@ const Signup = ({ loginPageRedirect }) => {
     formState: { errors },
     handleSubmit,
   } = useForm()
-  const onSubmit = async (data) => {
-    console.log(data)
-    if (data.password === data.c_password) {
-      const email = data.email
-      const password = data.password
-      await createUserWithEmailAndPassword(email, password)
-      await updateProfile({ displayName: data.name })
-      toast('User Created and Profile updated!')
-    } else {
-      setSignUpError('password not match')
-    }
-  }
+  const [userToken] = useRegister(user)
+
   let wrongSignIn
   if (error || updatingError) {
     wrongSignIn = error.message
@@ -56,7 +47,7 @@ const Signup = ({ loginPageRedirect }) => {
     return <Loading />
     // return (<p>Loading...</p>)
   }
-  if (user) {
+  if (userToken) {
     navigate('/dashboard')
     // return (
     //   <div>
@@ -65,6 +56,18 @@ const Signup = ({ loginPageRedirect }) => {
     //   </div>
     // );
   }
+  const onSubmit = async (data) => {
+    if (data.password === data.c_password) {
+      const email = data.email
+      const password = data.password
+      await createUserWithEmailAndPassword(email, password)
+      await updateProfile({ displayName: data.name })
+      toast('User Created and Profile updated!')
+    } else {
+      setSignUpError('password not match')
+    }
+  }
+
   const forgetPasswordHandler = () => {}
   return (
     <>

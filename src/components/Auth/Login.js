@@ -1,12 +1,13 @@
 import { sendPasswordResetEmail } from 'firebase/auth'
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import {
   useAuthState,
-  useSignInWithEmailAndPassword
+  useSignInWithEmailAndPassword,
 } from 'react-firebase-hooks/auth'
 import { useForm } from 'react-hook-form'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import useRegister from '../CustorHook/useRegister'
 import auth from '../DB/firebase.init'
 import Loading from '../Shared/Loading.js'
 
@@ -28,7 +29,13 @@ const Login = ({ signupPageRedirect }) => {
     formState: { errors },
     handleSubmit,
   } = useForm()
- let wrongLogin;
+  const [userToken] = useRegister(user)
+  useEffect(() => {
+    if (userToken) {
+      navigate(from, { replace: true })
+    }
+  }, [userToken, from, navigate])
+  let wrongLogin
   if (error) {
     wrongLogin = error.message
     // setLoginError(error.message)
@@ -43,16 +50,17 @@ const Login = ({ signupPageRedirect }) => {
     return <Loading />
     // return <p>Loading...</p>;
   }
-  if (user) {
-    // navigate('/')
-    navigate(from, { replace: true })
-    // return (
-    //   <div>
-    //     <p>Signed In User:</p>
-    //     <p>{loginUser.email}</p>
-    //   </div>
-    // );
-  }
+
+  // if (user) {
+  //   // navigate('/')
+  //   navigate(from, { replace: true })
+  //   // return (
+  //   //   <div>
+  //   //     <p>Signed In User:</p>
+  //   //     <p>{loginUser.email}</p>
+  //   //   </div>
+  //   // );
+  // }
 
   const onSubmit = (data) => {
     const email = data.email
@@ -106,7 +114,6 @@ const Login = ({ signupPageRedirect }) => {
                 {errors.email.message}
               </span>
             )}
-            
           </label>
         </div>
 
@@ -140,9 +147,7 @@ const Login = ({ signupPageRedirect }) => {
           <span className="text-red-400">
             {' '}
             {loginError ? 'Error:' + loginError : ''}
-            {
-              wrongLogin ? wrongLogin : ''
-            }
+            {wrongLogin ? wrongLogin : ''}
           </span>
           <button className="btn btn-wide btn-xs" value="login" type="submit">
             Login
