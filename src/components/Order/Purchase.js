@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import auth from '../DB/firebase.init'
 const Purchase = () => {
   const [loginUser] = useAuthState(auth)
@@ -9,7 +9,7 @@ const Purchase = () => {
   const phone = useRef('')
   const add = useRef('')
   const { state } = useLocation()
-
+  const navigate = useNavigate()
   const [total, setTotal] = useState(
     parseInt(state?.price) * parseInt(state?.min),
   )
@@ -55,7 +55,9 @@ const Purchase = () => {
       body: JSON.stringify(value),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        navigate('/dashboard/myorders')
+      })
       .catch((error) => console.log(error))
   }
   const onChangeHandler = (e) => {

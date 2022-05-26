@@ -27,7 +27,6 @@ const MyOrders = () => {
         })
         .then((data) => {
           setOrders(data)
-          console.log(data)
         })
     }
   }, [user])
@@ -45,11 +44,12 @@ const MyOrders = () => {
               <th>Phone</th>
               <th>Product</th>
               <th>Price</th>
+              <th>Payment</th>
             </tr>
           </thead>
           <tbody>
-            {orders.map((order) => (
-              <tr>
+            {orders.map((order, index) => (
+              <tr key={index}>
                 <th>{order.name}</th>
                 <td>{order.address}</td>
                 <td>{order.order}</td>
