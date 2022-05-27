@@ -6,7 +6,7 @@ import User from './User'
 
 const Users = () => {
   const { data: users, isLoading, refetch } = useQuery('users', () =>
-    fetch('https://enigmatic-ravine-64460.herokuapp.com/users', {
+    fetch('http://localhost:5000/users', {
       method: 'GET',
       headers: {
         authorization: `Bearer ${localStorage.getItem('webToken')}`,
@@ -18,7 +18,7 @@ const Users = () => {
   }
 
   const makeAdminHandler = (email) => {
-    fetch(`https://enigmatic-ravine-64460.herokuapp.com/admin/${email}`, {
+    fetch(`http://localhost:5000/admin/${email}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',
@@ -43,7 +43,7 @@ const Users = () => {
       })
   }
   return (
-    <div className="text-2xl">
+    <div>
       <p className="text-2xl">Total Users:{users.length}</p>
       <div class="overflow-x-auto">
         <table class="table w-full">
@@ -58,9 +58,9 @@ const Users = () => {
           <tbody>
             {users.map((user, index) => (
               <tr key={index}>
-                <th>{index + 1}</th>
-                <td>{user.email}</td>
-                <td>
+                <th className="py-1">{index + 1}</th>
+                <td className="py-1">{user.email}</td>
+                <td className="py-1">
                   {user.role === 'admin' ? (
                     'Admin'
                   ) : (
@@ -72,11 +72,19 @@ const Users = () => {
                     </button>
                   )}
                 </td>
-                <td>
-                  {' '}
-                  <button class="btn btn-active btn-sm bg-red-400 border-0">
-                    Delete
-                  </button>
+                <td className="py-1">
+                  {user.role === 'admin' ? (
+                    <button
+                      disabled
+                      class="btn btn-active btn-sm bg-red-400 border-0"
+                    >
+                      Delete
+                    </button>
+                  ) : (
+                    <button class="btn btn-active btn-sm bg-red-400 border-0">
+                      Delete
+                    </button>
+                  )}
                 </td>
               </tr>
             ))}

@@ -35,7 +35,7 @@ const AddProduct = () => {
             product_image: url,
           }
 
-          fetch('https://enigmatic-ravine-64460.herokuapp.com/product', {
+          fetch('http://localhost:5000/product', {
             method: 'POST',
             headers: {
               'content-type': 'application/json',

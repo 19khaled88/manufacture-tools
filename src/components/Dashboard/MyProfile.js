@@ -19,28 +19,28 @@ const MyProfile = () => {
     const linRef = linkedin.current.value
     const email = user?.email
     const value = { eduRef, locRef, phoRef, linRef, email }
-    fetch('https://enigmatic-ravine-64460.herokuapp.com/updateProfile', {
-      method: 'POST',
+
+    fetch(`http://localhost:5000/updateProfile/${user?.email}`, {
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json',
+        authorization: `Bearer ${localStorage.getItem('webToken')}`,
+      },
+      body: JSON.stringify(value),
+    })
+      .then((res) => res.json())
+      .then((data) => setProfileData(data))
+  }
+  useEffect(() => {
+    fetch(`http://localhost:5000/updateProfile/${user?.email}`, {
+      method: 'GET',
       headers: {
         'content-type': 'application/json',
       },
-      body: JSON.stringify(value),
-    }).then((res) => res.json())
-    // .then((data) => setProfileData(data))
-  }
-  useEffect(() => {
-    fetch(
-      `https://enigmatic-ravine-64460.herokuapp.com/updateProfile/${user?.email}`,
-      {
-        method: 'GET',
-        headers: {
-          'content-type': 'application/json',
-        },
-      },
-    )
+    })
       .then((res) => res.json())
       .then((data) => setProfileData(data))
-  }, [user?.email])
+  }, [user?.email, profileData])
   const { eduRef, linRef, locRef, phoRef } = profileData
   return (
     <div>
@@ -79,7 +79,7 @@ const MyProfile = () => {
                     <td>{eduRef}</td>
                     <td>{locRef}</td>
                     <td>{phoRef}</td>
-                    <td>{linRef}</td>
+                    <td>{linRef.length > 25 ? linRef.slice(0, 25) : linRef}</td>
                   </tr>
                 ) : (
                   ''

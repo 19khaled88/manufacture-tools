@@ -50,22 +50,33 @@ const Dashboard1 = () => {
             <li>
               <Link to="/dashboard/myreview">Add A Review</Link>
             </li>
-            <li>
-              <Link to="/dashboard/addproduct">Add product</Link>
-            </li>
-            <li>
-              <Link to="/dashboard/manageOrder">Manage Orders</Link>
-            </li>
+            {admin && (
+              <li>
+                <Link to="/dashboard/addproduct">Add product</Link>
+              </li>
+            )}
+
+            {admin && (
+              <li>
+                <Link to="/dashboard/manageOrder">Manage Orders</Link>
+              </li>
+            )}
+
             {admin && (
               <li>
                 <Link to="/dashboard/users">Users</Link>
               </li>
             )}
-            <li>
-              <Link to="/dashboard/manageProduct">Manage Product</Link>
-            </li>
+            {admin && (
+              <li>
+                <Link to="/dashboard/manageProduct">Manage Product</Link>
+              </li>
+            )}
           </ul>
-          <div class="container mx-auto hidden lg:flex lg:flex-row w-full pt-20 lg:inline">
+          <div
+            style={{ overflow: 'auto' }}
+            class="container mx-auto hidden lg:flex lg:flex-row w-full pt-20 lg:inline"
+          >
             <div className="w-72">
               <ul class="menu flex  flex-col">
                 <li className="border-2">
@@ -77,20 +88,26 @@ const Dashboard1 = () => {
                 <li className="border-2">
                   <Link to="/dashboard/myreview">Add A Review</Link>
                 </li>
-                <li className="border-2">
-                  <Link to="/dashboard/addproduct">Add product</Link>
-                </li>
-                <li className="border-2">
-                  <Link to="/dashboard/manageOrder">Manage Orders</Link>
-                </li>
+                {admin && (
+                  <li className="border-2">
+                    <Link to="/dashboard/addproduct">Add product</Link>
+                  </li>
+                )}
+                {admin && (
+                  <li className="border-2">
+                    <Link to="/dashboard/manageOrder">Manage Orders</Link>
+                  </li>
+                )}
                 {admin && (
                   <li className="border-2">
                     <Link to="/dashboard/users">Users</Link>
                   </li>
                 )}
-                <li className="border-2">
-                  <Link to="/dashboard/manageProduct">Manage Product</Link>
-                </li>
+                {admin && (
+                  <li className="border-2">
+                    <Link to="/dashboard/manageProduct">Manage Product</Link>
+                  </li>
+                )}
               </ul>
             </div>
             <div className="px-8 border-2 w-full hidden lg:inline">

@@ -8,15 +8,12 @@ const MyOrders = () => {
   const navigate = useNavigate()
   useEffect(() => {
     if (user) {
-      fetch(
-        `https://enigmatic-ravine-64460.herokuapp.com/order?user=${user?.email}`,
-        {
-          method: 'GET',
-          headers: {
-            authorization: `Bearer ${localStorage.getItem('webToken')}`,
-          },
+      fetch(`http://localhost:5000/order?user=${user?.email}`, {
+        method: 'GET',
+        headers: {
+          authorization: `Bearer ${localStorage.getItem('webToken')}`,
         },
-      )
+      })
         .then((res) => {
           if (res.status === 401) {
             navigate('/home')
@@ -56,6 +53,17 @@ const MyOrders = () => {
                 <td>{order.phone}</td>
                 <td>{order.product}</td>
                 <td>{order.price}</td>
+                {order.pay === 'not paid' ? (
+                  <td className=" rounded-md my-3 text-center btn-sm bg-amber-400 flex  items-center">
+                    <button className="mx-auto ">Pay</button>
+                  </td>
+                ) : (
+                  <td className="rounded-md my-3 text-center btn-sm bg-emerald-400 flex  items-center">
+                    <button className="mx-auto" disabled>
+                      Paid
+                    </button>
+                  </td>
+                )}
               </tr>
             ))}
           </tbody>
