@@ -27,7 +27,9 @@ const MyOrders = () => {
         })
     }
   }, [user])
-
+  const cancelHandler = (id) => {
+    console.log(id)
+  }
   return (
     <div>
       <p className="text-2xl"> MyOrders</p>
@@ -42,25 +44,46 @@ const MyOrders = () => {
               <th>Product</th>
               <th>Price</th>
               <th>Payment</th>
+              <th>Cancel</th>
             </tr>
           </thead>
           <tbody>
             {orders.map((order, index) => (
               <tr key={index}>
-                <th>{order.name}</th>
-                <td>{order.address}</td>
-                <td>{order.order}</td>
-                <td>{order.phone}</td>
-                <td>{order.product}</td>
-                <td>{order.price}</td>
+                <th className="py-1">{order.name}</th>
+                <td className="py-1">{order.address}</td>
+                <td className="py-1">{order.order}</td>
+                <td className="py-1">{order.phone}</td>
+                <td className="py-1">{order.product}</td>
+                <td className="py-1">{order.price}</td>
                 {order.pay === 'not paid' ? (
-                  <td className=" rounded-md my-3 text-center btn-sm bg-amber-400 flex  items-center">
-                    <button className="mx-auto ">Pay</button>
+                  <td className="py-1">
+                    <button className="btn btn-sm bg-amber-400 ">Pay</button>
                   </td>
                 ) : (
-                  <td className="rounded-md my-3 text-center btn-sm bg-emerald-400 flex  items-center">
-                    <button className="mx-auto" disabled>
-                      Paid
+                  <td className="py-1">
+                    <button className=" btn btn-sm bg-emerald-400" disabled>
+                      Paid and Shipping pending
+                    </button>
+                  </td>
+                )}
+                {order.pay === 'not paid' ? (
+                  <td className="py-1">
+                    <button
+                      className="btn btn-sm btn-warning 1"
+                      onClick={() => cancelHandler(order._id)}
+                    >
+                      Cancel
+                    </button>
+                  </td>
+                ) : (
+                  <td className="py-1">
+                    <button
+                      disabled
+                      className="btn btn-sm btn-warning 1"
+                      onClick={() => cancelHandler(order._id)}
+                    >
+                      Cancel
                     </button>
                   </td>
                 )}

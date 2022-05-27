@@ -19,9 +19,15 @@ import { Navbar } from './components/Shared/Navbar/Navbar'
 import 'react-toastify/dist/ReactToastify.css'
 import RequiredAdmin from './components/Auth/requiredAdmin'
 import Blogs from './components/Blog/Blogs'
+import useAdmin from './components/CustorHook/useAdmin'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import auth from './components/DB/firebase.init'
+import AdminProductUpdate from './components/Dashboard/AdminProductUpdate'
 const queryClient = new QueryClient()
 
 function App() {
+  const [user] = useAuthState(auth)
+  const [admin] = useAdmin(user)
   return (
     <QueryClientProvider client={queryClient}>
       <div className="App">
@@ -38,6 +44,13 @@ function App() {
               </RequiredAuth>
             }
           />
+          {admin && (
+            <Route
+              path="/adminProductUpdate"
+              element={<AdminProductUpdate></AdminProductUpdate>}
+            />
+          )}
+
           <Route
             path="/dashboard"
             element={

@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useQuery } from 'react-query'
 import Loading from '../Shared/Loading'
+import AdminProductList from './AdminProductList'
+
 import UpdateProduct from './UpdateProduct'
 
 const ManageProduct = () => {
@@ -18,6 +20,7 @@ const ManageProduct = () => {
   }
   const handler = ({ action, id }) => {
     if (action === 'remove') {
+      console.log(action, id)
       fetch(`http://localhost:5000/deleteProduct/${id}`, {
         method: 'DELETE',
         headers: {
@@ -26,12 +29,12 @@ const ManageProduct = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data)
           refetch()
         })
-    } else if (action === 'update') {
-      
     }
+    //  else if (action === 'update') {
+    //   <AdminProductUpdate label={label}></AdminProductUpdate>
+    // }
   }
 
   return (
@@ -50,7 +53,12 @@ const ManageProduct = () => {
             </tr>
           </thead>
           <tbody>
-            {products.map((product, index) => (
+            <AdminProductList
+              handler={handler}
+              products={products}
+            ></AdminProductList>
+
+            {/* {products.map((product, index) => (
               <tr key={index}>
                 <th>{product.product_name}</th>
                 <td>{product.product_price}</td>
@@ -77,7 +85,7 @@ const ManageProduct = () => {
                   </button>
                 </td>
               </tr>
-            ))}
+            ))} */}
           </tbody>
         </table>
       </div>
