@@ -27,9 +27,16 @@ const MyOrders = () => {
         })
     }
   }, [user])
-  const cancelHandler = (id) => {
-    console.log(id)
+  const cancelHandler = (id, order, product) => {
+    fetch(`http://localhost:5000/deleteSoldProduct/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({ product_stock: order, product_name: product }),
+    })
   }
+
   return (
     <div>
       <p className="text-2xl"> MyOrders</p>
@@ -71,18 +78,16 @@ const MyOrders = () => {
                   <td className="py-1">
                     <button
                       className="btn btn-sm btn-warning 1"
-                      onClick={() => cancelHandler(order._id)}
+                      onClick={() =>
+                        cancelHandler(order._id, order.order, order.product)
+                      }
                     >
                       Cancel
                     </button>
                   </td>
                 ) : (
                   <td className="py-1">
-                    <button
-                      disabled
-                      className="btn btn-sm btn-warning 1"
-                      onClick={() => cancelHandler(order._id)}
-                    >
+                    <button disabled className="btn btn-sm btn-warning 1">
                       Cancel
                     </button>
                   </td>
