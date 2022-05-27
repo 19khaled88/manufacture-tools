@@ -7,7 +7,6 @@ const ManageOrder = ({ manage, refetch }) => {
       method: 'DELETE',
     })
       .then((res) => {
-        console.log(res)
         return res.json()
       })
       .then((data) => refetch(data))

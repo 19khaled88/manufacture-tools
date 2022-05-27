@@ -88,6 +88,15 @@ export const Navbar = ({ fixed }) => {
                   <span className="ml-2">Home</span>
                 </Link>
               </li>
+              <li className="nav-item ">
+                <Link
+                  className="lg:px-3  py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                  to="/blog"
+                >
+                  <span className="ml-2">Blog</span>
+                </Link>
+              </li>
+
               {user ? (
                 <li className="nav-item">
                   <Link

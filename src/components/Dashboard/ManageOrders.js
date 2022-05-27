@@ -36,7 +36,7 @@ const ManageOrders = () => {
 
   return (
     <div>
-      <p className="text-2xl">Manage Orders : {manageOrders.length}</p>
+      <p className="text-2xl">Manage Orders : {manageOrders?.length}</p>
       <div class="overflow-x-auto">
         <table class="table w-full ">
           <thead>

@@ -79,7 +79,9 @@ const MyProfile = () => {
                     <td>{eduRef}</td>
                     <td>{locRef}</td>
                     <td>{phoRef}</td>
-                    <td>{linRef.length > 25 ? linRef.slice(0, 25) : linRef}</td>
+                    <td>
+                      {linRef?.length > 25 ? linRef.slice(0, 25) : linRef}
+                    </td>
                   </tr>
                 ) : (
                   ''
