@@ -2,9 +2,13 @@ import React, { useEffect, useState } from 'react'
 
 const ManageOrder = ({ manage, refetch }) => {
   const [order, setOrder] = useState('')
-  const productDeleteHandler = (id) => {
+  const productDeleteHandler = (id, order, name) => {
     fetch(`http://localhost:5000/deleteSoldProduct/${id}`, {
       method: 'DELETE',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({ product_stock: order, product_name: name }),
     })
       .then((res) => {
         return res.json()
@@ -25,7 +29,9 @@ const ManageOrder = ({ manage, refetch }) => {
         {manage.pay === 'not paid' ? (
           <td className="py-2">
             <button
-              onClick={() => productDeleteHandler(manage._id)}
+              onClick={() =>
+                productDeleteHandler(manage._id, manage.order, manage.product)
+              }
               className="btn btn-sm btn-warning"
             >
               Delete

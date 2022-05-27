@@ -26,6 +26,7 @@ const ManageOrders = () => {
       refetch()
     }
   }
+
   // useEffect(() => {
   //   fetch('http://localhost:5000/manageorders')
   //     .then((res) => res.json())
