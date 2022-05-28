@@ -7,7 +7,7 @@ import UpdateProduct from './UpdateProduct'
 
 const ManageProduct = () => {
   const { data: products, isLoading, refetch } = useQuery('products', () =>
-    fetch('http://localhost:5000/allProduct', {
+    fetch('https://enigmatic-ravine-64460.herokuapp.com/allProduct', {
       method: 'GET',
       headers: {
         'content-type': 'application/json',
@@ -21,12 +21,15 @@ const ManageProduct = () => {
   const handler = ({ action, id }) => {
     if (action === 'remove') {
       console.log(action, id)
-      fetch(`http://localhost:5000/deleteProduct/${id}`, {
-        method: 'DELETE',
-        headers: {
-          authorization: `Bearer ${localStorage.getItem('webToken')}`,
+      fetch(
+        `https://enigmatic-ravine-64460.herokuapp.com/deleteProduct/${id}`,
+        {
+          method: 'DELETE',
+          headers: {
+            authorization: `Bearer ${localStorage.getItem('webToken')}`,
+          },
         },
-      })
+      )
         .then((res) => res.json())
         .then((data) => {
           refetch()

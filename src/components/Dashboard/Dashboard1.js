@@ -44,9 +44,12 @@ const Dashboard1 = () => {
             <li>
               <Link to="/dashboard">My Profile</Link>
             </li>
-            <li>
-              <Link to="/dashboard/myorders">My Orders</Link>
-            </li>
+            {!admin && (
+              <li>
+                <Link to="/dashboard/myorders">My Orders</Link>
+              </li>
+            )}
+
             {!admin && (
               <li>
                 <Link to="/dashboard/myreview">Add A Review</Link>
@@ -85,9 +88,12 @@ const Dashboard1 = () => {
                 <li className="border-2">
                   <Link to="/dashboard">My Profile</Link>
                 </li>
-                <li className="border-2">
-                  <Link to="/dashboard/myorders">My Orders</Link>
-                </li>
+                {!admin && (
+                  <li className="border-2">
+                    <Link to="/dashboard/myorders">My Orders</Link>
+                  </li>
+                )}
+
                 {!admin && (
                   <li className="border-2">
                     <Link to="/dashboard/myreview">Add A Review</Link>

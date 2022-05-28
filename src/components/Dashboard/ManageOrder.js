@@ -3,13 +3,16 @@ import React, { useEffect, useState } from 'react'
 const ManageOrder = ({ manage, refetch }) => {
   const [order, setOrder] = useState('')
   const productDeleteHandler = (id, order, name) => {
-    fetch(`http://localhost:5000/deleteSoldProduct/${id}`, {
-      method: 'DELETE',
-      headers: {
-        'content-type': 'application/json',
+    fetch(
+      `https://enigmatic-ravine-64460.herokuapp.com/deleteSoldProduct/${id}`,
+      {
+        method: 'DELETE',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify({ product_stock: order, product_name: name }),
       },
-      body: JSON.stringify({ product_stock: order, product_name: name }),
-    })
+    )
       .then((res) => {
         return res.json()
       })

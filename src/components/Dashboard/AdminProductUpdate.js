@@ -17,7 +17,7 @@ const AdminProductUpdate = () => {
       product_stock: pStock.current.value,
       product_min_order: pMin_order.current.value,
     }
-    fetch(`http://localhost:5000/updateProduct/${id}`, {
+    fetch(`https://enigmatic-ravine-64460.herokuapp.com/updateProduct/${id}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',
