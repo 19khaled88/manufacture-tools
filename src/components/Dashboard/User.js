@@ -1,11 +1,11 @@
 import React from 'react'
 
-const User = ({user, index}) => {
+const User = ({ user, index }) => {
   return (
     <div>
       <p>User</p>
-      <div class="overflow-x-auto">
-        <table class="table w-full">
+      <div className="overflow-x-auto">
+        <table className="table w-full">
           <thead>
             <tr>
               <th>No</th>
@@ -15,9 +15,9 @@ const User = ({user, index}) => {
             </tr>
           </thead>
           <tbody>
-              <tr>
-                  <td>{index + 1}</td>
-              </tr>
+            <tr>
+              <td>{index + 1}</td>
+            </tr>
             {/* {users.map((user, index) => (
               <tr key={index}>
                 <th>{index + 1}</th>

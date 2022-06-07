@@ -17,7 +17,7 @@ const AdminProductUpdate = () => {
       product_stock: pStock.current.value,
       product_min_order: pMin_order.current.value,
     }
-    fetch(`https://enigmatic-ravine-64460.herokuapp.com/updateProduct/${id}`, {
+    fetch(`http://localhost:5000/updateProduct/${id}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',
@@ -33,10 +33,10 @@ const AdminProductUpdate = () => {
   }
   return (
     <div className="container flex mx-auto px-2 pt-16 justify-center">
-      <div style={{ width: '400px' }} class="card bg-base-100 shadow-xl">
+      <div style={{ width: '400px' }} className="card bg-base-100 shadow-xl">
         <form onSubmit={updatehandler}>
-          <div class="card-body">
-            <h2 class="card-title mx-auto pb-6">Update Product</h2>
+          <div className="card-body">
+            <h2 className="card-title mx-auto pb-6">Update Product</h2>
             <div className="flex flex-row">
               <label className="w-2/3 text-left">Product Name:</label>
               <input
@@ -44,7 +44,7 @@ const AdminProductUpdate = () => {
                 type="text"
                 defaultValue={name}
                 placeholder="Type here"
-                class="input input-bordered input-sm w-full max-w-xs"
+                className="input input-bordered input-sm w-full max-w-xs"
               />
             </div>
             <div className="flex flex-row">
@@ -54,7 +54,7 @@ const AdminProductUpdate = () => {
                 type="text"
                 defaultValue={price}
                 placeholder="Type here"
-                class="input input-bordered input-sm w-full max-w-xs"
+                className="input input-bordered input-sm w-full max-w-xs"
               />
             </div>
             <div className="flex flex-row ">
@@ -64,7 +64,7 @@ const AdminProductUpdate = () => {
                 defaultValue={stock}
                 type="text"
                 placeholder="Type here"
-                class="input input-bordered input-sm w-full max-w-xs"
+                className="input input-bordered input-sm w-full max-w-xs"
               />
             </div>
             <div className="flex flex-row">
@@ -74,11 +74,11 @@ const AdminProductUpdate = () => {
                 defaultValue={min_order}
                 type="text"
                 placeholder="Type here"
-                class="input input-bordered input-sm w-full max-w-xs"
+                className="input input-bordered input-sm w-full max-w-xs"
               />
             </div>
-            <div class="card-actions justify-end">
-              <button class="btn btn-primary" type="submit" value="submit">
+            <div className="card-actions justify-end">
+              <button className="btn btn-primary" type="submit" value="submit">
                 Buy Now
               </button>
             </div>

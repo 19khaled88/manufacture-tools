@@ -5,7 +5,7 @@ const AdminProductList = ({ products, handler }) => {
   const navigate = useNavigate()
   // const handler = ({ action, id }) => {
   //     if (action === 'remove') {
-  //       fetch(`https://enigmatic-ravine-64460.herokuapp.com/deleteProduct/${id}`, {
+  //       fetch(`http://localhost:5000/deleteProduct/${id}`, {
   //         method: 'DELETE',
   //         headers: {
   //           authorization: `Bearer ${localStorage.getItem('webToken')}`,
@@ -42,14 +42,14 @@ const AdminProductList = ({ products, handler }) => {
           <td>
             <button
               onClick={() => handler({ action: 'remove', id: product._id })}
-              class="btn-warning btn btn-sm"
+              className="btn-warning btn btn-sm"
             >
               Delete
             </button>
           </td>
           <td>
             <button
-              class="btn-accent btn btn-sm modal-button"
+              className="btn-accent btn btn-sm modal-button"
               onClick={() =>
                 productUpdateHandler(
                   product._id,

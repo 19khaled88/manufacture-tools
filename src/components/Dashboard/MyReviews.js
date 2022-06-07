@@ -17,7 +17,7 @@ const MyReviews = () => {
     const reset = () => {
       reviewData.current.value = ''
     }
-    await fetch('https://enigmatic-ravine-64460.herokuapp.com/rating', {
+    await fetch('http://localhost:5000/rating', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',

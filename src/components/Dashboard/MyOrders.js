@@ -8,15 +8,12 @@ const MyOrders = () => {
   const navigate = useNavigate()
   useEffect(() => {
     if (user) {
-      fetch(
-        `https://enigmatic-ravine-64460.herokuapp.com/order?user=${user?.email}`,
-        {
-          method: 'GET',
-          headers: {
-            authorization: `Bearer ${localStorage.getItem('webToken')}`,
-          },
+      fetch(`http://localhost:5000/order?user=${user?.email}`, {
+        method: 'GET',
+        headers: {
+          authorization: `Bearer ${localStorage.getItem('webToken')}`,
         },
-      )
+      })
         .then((res) => {
           if (res.status === 401) {
             navigate('/home')
@@ -31,23 +28,25 @@ const MyOrders = () => {
     }
   }, [user])
   const cancelHandler = (id, order, product) => {
-    fetch(
-      `https://enigmatic-ravine-64460.herokuapp.com/deleteSoldProduct/${id}`,
-      {
-        method: 'DELETE',
-        headers: {
-          'content-type': 'application/json',
-        },
-        body: JSON.stringify({ product_stock: order, product_name: product }),
+    fetch(`http://localhost:5000/deleteSoldProduct/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json',
       },
-    )
+      body: JSON.stringify({ product_stock: order, product_name: product }),
+    })
+  }
+  const paymentHandler = (id, email, product, price) => {
+    navigate('/payment', {
+      state: { id: id, email: email, product: product, price: price },
+    })
   }
 
   return (
     <div>
       <p className="text-2xl"> MyOrders</p>
-      <div class="overflow-x-auto">
-        <table class="table w-full">
+      <div className="overflow-x-auto">
+        <table className="table w-full">
           <thead>
             <tr>
               <th>Name</th>
@@ -71,7 +70,19 @@ const MyOrders = () => {
                 <td className="py-1">{order.price}</td>
                 {order.pay === 'not paid' ? (
                   <td className="py-1">
-                    <button className="btn btn-sm bg-amber-400 ">Pay</button>
+                    <button
+                      onClick={() =>
+                        paymentHandler(
+                          order._id,
+                          order.email,
+                          order.product,
+                          order.price,
+                        )
+                      }
+                      className="btn btn-sm bg-amber-400 "
+                    >
+                      Pay
+                    </button>
                   </td>
                 ) : (
                   <td className="py-1">

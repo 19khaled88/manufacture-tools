@@ -50,7 +50,7 @@ const Purchase = () => {
       payment,
     }
 
-    fetch('https://enigmatic-ravine-64460.herokuapp.com/placceOrder', {
+    fetch('http://localhost:5000/placceOrder', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -59,6 +59,7 @@ const Purchase = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        toast('order placed successfully')
         navigate('/dashboard/myorders')
       })
       .catch((error) => toast(error.message))
@@ -159,8 +160,8 @@ const Purchase = () => {
           </p>
         </div>
         <div>
-          <div class="overflow-x-auto">
-            <table class="table w-full">
+          <div className="overflow-x-auto">
+            <table className="table w-full">
               <thead>
                 <tr>
                   <th>Name</th>
@@ -238,7 +239,7 @@ const Purchase = () => {
                 {error ? 'Error:' + error : ''}
               </span>
               <div className="card-actions justify-end pt-8">
-                <button class="btn  bg-blue-500 btn-sm buyButton">
+                <button className="btn  bg-blue-500 btn-sm buyButton">
                   Buy Now
                 </button>
               </div>

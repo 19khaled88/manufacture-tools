@@ -7,7 +7,7 @@ import UpdateProduct from './UpdateProduct'
 
 const ManageProduct = () => {
   const { data: products, isLoading, refetch } = useQuery('products', () =>
-    fetch('https://enigmatic-ravine-64460.herokuapp.com/allProduct', {
+    fetch('http://localhost:5000/allProduct', {
       method: 'GET',
       headers: {
         'content-type': 'application/json',
@@ -21,15 +21,12 @@ const ManageProduct = () => {
   const handler = ({ action, id }) => {
     if (action === 'remove') {
       console.log(action, id)
-      fetch(
-        `https://enigmatic-ravine-64460.herokuapp.com/deleteProduct/${id}`,
-        {
-          method: 'DELETE',
-          headers: {
-            authorization: `Bearer ${localStorage.getItem('webToken')}`,
-          },
+      fetch(`http://localhost:5000/deleteProduct/${id}`, {
+        method: 'DELETE',
+        headers: {
+          authorization: `Bearer ${localStorage.getItem('webToken')}`,
         },
-      )
+      })
         .then((res) => res.json())
         .then((data) => {
           refetch()
@@ -43,8 +40,8 @@ const ManageProduct = () => {
   return (
     <>
       <div className="text-2xl">ManageProduct</div>
-      <div class="overflow-x-auto">
-        <table class="table w-full">
+      <div className="overflow-x-auto">
+        <table className="table w-full">
           <thead>
             <tr>
               <th>Name</th>
@@ -72,7 +69,7 @@ const ManageProduct = () => {
                     onClick={() =>
                       handler({ action: 'remove', id: product._id })
                     }
-                    class="btn-warning btn btn-sm"
+                    className="btn-warning btn btn-sm"
                   >
                     Delete
                   </button>
@@ -82,7 +79,7 @@ const ManageProduct = () => {
                     onClick={() =>
                       handler({ action: 'update', id: product._id })
                     }
-                    class="btn-accent btn btn-sm"
+                    className="btn-accent btn btn-sm"
                   >
                     Update
                   </button>

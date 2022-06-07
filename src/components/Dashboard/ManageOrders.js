@@ -10,7 +10,7 @@ const ManageOrders = () => {
   const { data: manageOrders, isLoading, refetch } = useQuery(
     'manageOrders',
     () =>
-      fetch('https://enigmatic-ravine-64460.herokuapp.com/manageorders', {
+      fetch('http://localhost:5000/manageorders', {
         method: 'GET',
         headers: {
           authorization: `Bearer ${localStorage.getItem('webToken')}`,
@@ -28,7 +28,7 @@ const ManageOrders = () => {
   }
 
   // useEffect(() => {
-  //   fetch('https://enigmatic-ravine-64460.herokuapp.com/manageorders')
+  //   fetch('http://localhost:5000/manageorders')
   //     .then((res) => res.json())
   //     .then((data) => {
   //       setManageOrder(data)
@@ -38,8 +38,8 @@ const ManageOrders = () => {
   return (
     <div>
       <p className="text-2xl">Manage Orders : {manageOrders?.length}</p>
-      <div class="overflow-x-auto">
-        <table class="table w-full ">
+      <div className="overflow-x-auto">
+        <table className="table w-full ">
           <thead>
             <tr>
               <th>Name</th>

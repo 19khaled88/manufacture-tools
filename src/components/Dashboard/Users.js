@@ -6,7 +6,7 @@ import User from './User'
 
 const Users = () => {
   const { data: users, isLoading, refetch } = useQuery('users', () =>
-    fetch('https://enigmatic-ravine-64460.herokuapp.com/users', {
+    fetch('http://localhost:5000/users', {
       method: 'GET',
       headers: {
         authorization: `Bearer ${localStorage.getItem('webToken')}`,
@@ -18,7 +18,7 @@ const Users = () => {
   }
 
   const makeAdminHandler = (email) => {
-    fetch(`https://enigmatic-ravine-64460.herokuapp.com/admin/${email}`, {
+    fetch(`http://localhost:5000/admin/${email}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',
@@ -45,8 +45,8 @@ const Users = () => {
   return (
     <div>
       <p className="text-2xl">Total Users:{users.length}</p>
-      <div class="overflow-x-auto">
-        <table class="table w-full">
+      <div className="overflow-x-auto">
+        <table className="table w-full">
           <thead>
             <tr>
               <th>No</th>
@@ -66,7 +66,7 @@ const Users = () => {
                   ) : (
                     <button
                       onClick={() => makeAdminHandler(user.email)}
-                      class="btn btn-active btn-sm btn-accent"
+                      className="btn btn-active btn-sm btn-accent"
                     >
                       Make Admin
                     </button>
@@ -76,12 +76,12 @@ const Users = () => {
                   {user.role === 'admin' ? (
                     <button
                       disabled
-                      class="btn btn-active btn-sm bg-red-400 border-0"
+                      className="btn btn-active btn-sm bg-red-400 border-0"
                     >
                       Delete
                     </button>
                   ) : (
-                    <button class="btn btn-active btn-sm bg-red-400 border-0">
+                    <button className="btn btn-active btn-sm bg-red-400 border-0">
                       Delete
                     </button>
                   )}

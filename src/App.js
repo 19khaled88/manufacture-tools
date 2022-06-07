@@ -23,6 +23,7 @@ import useAdmin from './components/CustorHook/useAdmin'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import auth from './components/DB/firebase.init'
 import AdminProductUpdate from './components/Dashboard/AdminProductUpdate'
+import Payment from './components/Dashboard/Payment'
 const queryClient = new QueryClient()
 
 function App() {
@@ -50,7 +51,7 @@ function App() {
               element={<AdminProductUpdate></AdminProductUpdate>}
             />
           )}
-
+          <Route path="/payment" element={<Payment></Payment>} />
           <Route
             path="/dashboard"
             element={
