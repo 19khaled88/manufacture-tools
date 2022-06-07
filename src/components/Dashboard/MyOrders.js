@@ -8,12 +8,15 @@ const MyOrders = () => {
   const navigate = useNavigate()
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost:5000/order?user=${user?.email}`, {
-        method: 'GET',
-        headers: {
-          authorization: `Bearer ${localStorage.getItem('webToken')}`,
+      fetch(
+        `https://evening-wildwood-96784.herokuapp.com/order?user=${user?.email}`,
+        {
+          method: 'GET',
+          headers: {
+            authorization: `Bearer ${localStorage.getItem('webToken')}`,
+          },
         },
-      })
+      )
         .then((res) => {
           if (res.status === 401) {
             navigate('/home')
@@ -28,13 +31,16 @@ const MyOrders = () => {
     }
   }, [user])
   const cancelHandler = (id, order, product) => {
-    fetch(`http://localhost:5000/deleteSoldProduct/${id}`, {
-      method: 'DELETE',
-      headers: {
-        'content-type': 'application/json',
+    fetch(
+      `https://evening-wildwood-96784.herokuapp.com/deleteSoldProduct/${id}`,
+      {
+        method: 'DELETE',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify({ product_stock: order, product_name: product }),
       },
-      body: JSON.stringify({ product_stock: order, product_name: product }),
-    })
+    )
   }
   const paymentHandler = (id, email, product, price) => {
     navigate('/payment', {

@@ -5,7 +5,7 @@ const AdminProductList = ({ products, handler }) => {
   const navigate = useNavigate()
   // const handler = ({ action, id }) => {
   //     if (action === 'remove') {
-  //       fetch(`http://localhost:5000/deleteProduct/${id}`, {
+  //       fetch(`https://evening-wildwood-96784.herokuapp.com/deleteProduct/${id}`, {
   //         method: 'DELETE',
   //         headers: {
   //           authorization: `Bearer ${localStorage.getItem('webToken')}`,

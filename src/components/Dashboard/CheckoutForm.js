@@ -9,13 +9,16 @@ const CheckoutForm = ({ id, email, product, price }) => {
   const elements = useElements()
 
   useEffect(() => {
-    fetch('http://localhost:5000/create-payment-intent', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
+    fetch(
+      'https://evening-wildwood-96784.herokuapp.com/create-payment-intent',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ price: price }),
       },
-      body: JSON.stringify({ price: price }),
-    })
+    )
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret))
   }, [price])
@@ -50,12 +53,15 @@ const CheckoutForm = ({ id, email, product, price }) => {
       setError(intentError?.message)
       setSuccess('')
     } else {
-      fetch(`http://localhost:5000/confirmPayment/${id}`, {
-        method: 'PUT',
-        headers: {
-          'content-type': 'application/json',
+      fetch(
+        `https://evening-wildwood-96784.herokuapp.com/confirmPayment/${id}`,
+        {
+          method: 'PUT',
+          headers: {
+            'content-type': 'application/json',
+          },
         },
-      })
+      )
         .then((res) => res.json())
         .then((data) => console.log(data))
       setTransactionId(paymentIntent.id)

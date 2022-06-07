@@ -50,7 +50,7 @@ const Purchase = () => {
       payment,
     }
 
-    fetch('http://localhost:5000/placceOrder', {
+    fetch('https://evening-wildwood-96784.herokuapp.com/placceOrder', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',

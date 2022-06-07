@@ -6,7 +6,7 @@ import User from './User'
 
 const Users = () => {
   const { data: users, isLoading, refetch } = useQuery('users', () =>
-    fetch('http://localhost:5000/users', {
+    fetch('https://evening-wildwood-96784.herokuapp.com/users', {
       method: 'GET',
       headers: {
         authorization: `Bearer ${localStorage.getItem('webToken')}`,
@@ -18,7 +18,7 @@ const Users = () => {
   }
 
   const makeAdminHandler = (email) => {
-    fetch(`http://localhost:5000/admin/${email}`, {
+    fetch(`https://evening-wildwood-96784.herokuapp.com/admin/${email}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',

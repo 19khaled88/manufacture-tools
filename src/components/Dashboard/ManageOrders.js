@@ -10,7 +10,7 @@ const ManageOrders = () => {
   const { data: manageOrders, isLoading, refetch } = useQuery(
     'manageOrders',
     () =>
-      fetch('http://localhost:5000/manageorders', {
+      fetch('https://evening-wildwood-96784.herokuapp.com/manageorders', {
         method: 'GET',
         headers: {
           authorization: `Bearer ${localStorage.getItem('webToken')}`,
@@ -28,7 +28,7 @@ const ManageOrders = () => {
   }
 
   // useEffect(() => {
-  //   fetch('http://localhost:5000/manageorders')
+  //   fetch('https://evening-wildwood-96784.herokuapp.com/manageorders')
   //     .then((res) => res.json())
   //     .then((data) => {
   //       setManageOrder(data)

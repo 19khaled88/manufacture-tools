@@ -17,7 +17,7 @@ const MyReviews = () => {
     const reset = () => {
       reviewData.current.value = ''
     }
-    await fetch('http://localhost:5000/rating', {
+    await fetch('https://evening-wildwood-96784.herokuapp.com/rating', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',

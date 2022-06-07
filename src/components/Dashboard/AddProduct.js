@@ -35,7 +35,7 @@ const AddProduct = () => {
             product_image: url,
           }
 
-          fetch('http://localhost:5000/product', {
+          fetch('https://evening-wildwood-96784.herokuapp.com/product', {
             method: 'POST',
             headers: {
               'content-type': 'application/json',

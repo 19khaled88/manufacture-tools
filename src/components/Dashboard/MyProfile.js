@@ -20,24 +20,30 @@ const MyProfile = () => {
     const email = user?.email
     const value = { eduRef, locRef, phoRef, linRef, email }
 
-    fetch(`http://localhost:5000/updateProfile/${user?.email}`, {
-      method: 'PUT',
-      headers: {
-        'content-type': 'application/json',
-        authorization: `Bearer ${localStorage.getItem('webToken')}`,
+    fetch(
+      `https://evening-wildwood-96784.herokuapp.com/updateProfile/${user?.email}`,
+      {
+        method: 'PUT',
+        headers: {
+          'content-type': 'application/json',
+          authorization: `Bearer ${localStorage.getItem('webToken')}`,
+        },
+        body: JSON.stringify(value),
       },
-      body: JSON.stringify(value),
-    })
+    )
       .then((res) => res.json())
       .then((data) => setProfileData(data))
   }
   useEffect(() => {
-    fetch(`http://localhost:5000/updateProfile/${user?.email}`, {
-      method: 'GET',
-      headers: {
-        'content-type': 'application/json',
+    fetch(
+      `https://evening-wildwood-96784.herokuapp.com/updateProfile/${user?.email}`,
+      {
+        method: 'GET',
+        headers: {
+          'content-type': 'application/json',
+        },
       },
-    })
+    )
       .then((res) => res.json())
       .then((data) => setProfileData(data))
   }, [user?.email, profileData])
