@@ -51,7 +51,7 @@ const MyProfile = () => {
   return (
     <div>
       <p className="text-2xl">My Profiles</p>
-      <div className="flex flex-row">
+      <div className="flex flex-col lg:flex-row">
         <div className="flex flex-col">
           <div className="overflow-x-auto">
             <table className="table w-full">
@@ -127,7 +127,9 @@ const MyProfile = () => {
                   className="input input-bordered input-primary w-full max-w-xs"
                 />
                 <div className="card-actions justify-end">
-                  <button className="btn btn-primary">submit</button>
+                  <button className="px-3 py-1 rounded-md btn-primary">
+                    submit
+                  </button>
                 </div>
               </div>
             </div>

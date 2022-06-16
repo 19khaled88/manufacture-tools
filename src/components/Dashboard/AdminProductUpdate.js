@@ -78,8 +78,12 @@ const AdminProductUpdate = () => {
               />
             </div>
             <div className="card-actions justify-end">
-              <button className="btn btn-primary" type="submit" value="submit">
-                Buy Now
+              <button
+                className=" px-3 py-1 rounded-md  bg-teal-500"
+                type="submit"
+                value="submit"
+              >
+                Update
               </button>
             </div>
           </div>
