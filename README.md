@@ -2,7 +2,7 @@
 
 Manufacturer Tools site [Website Link](https://gilded-pony-dcfe3e.netlify.app/).
 
-## Table of Used tools and technology
+## Table of Used Tools and Technology
 
 - Use react js with node js and mongodb
 - Tailwind CSS for front-end design with daisyUI
@@ -12,7 +12,9 @@ Manufacturer Tools site [Website Link](https://gilded-pony-dcfe3e.netlify.app/).
 
 ## Table of content
 
+- User singin and signup(including google authention)
 - Home page
 - Dashboard
 - Purchase page
-- admin and use role
+- Admin and User role
+- Blog
