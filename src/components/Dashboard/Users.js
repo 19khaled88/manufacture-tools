@@ -56,38 +56,44 @@ const Users = () => {
             </tr>
           </thead>
           <tbody>
-            {users.map((user, index) => (
-              <tr key={index}>
-                <th className="py-1">{index + 1}</th>
-                <td className="py-1">{user.email}</td>
-                <td className="py-1">
-                  {user.role === 'admin' ? (
-                    'Admin'
-                  ) : (
-                    <button
-                      onClick={() => makeAdminHandler(user.email)}
-                      className="btn btn-active btn-sm btn-accent"
-                    >
-                      Make Admin
-                    </button>
-                  )}
-                </td>
-                <td className="py-1">
-                  {user.role === 'admin' ? (
-                    <button
-                      disabled
-                      className="btn btn-active btn-sm bg-red-400 border-0"
-                    >
-                      Delete
-                    </button>
-                  ) : (
-                    <button className="btn btn-active btn-sm bg-red-400 border-0">
-                      Delete
-                    </button>
-                  )}
-                </td>
-              </tr>
-            ))}
+            {users.message !== 'Forbidden access' ? (
+              users.map((user, index) => (
+                <tr key={index}>
+                  <th className="py-1">{index + 1}</th>
+                  <td className="py-1">{user.email}</td>
+                  <td className="py-1">
+                    {user.role === 'admin' ? (
+                      'Admin'
+                    ) : (
+                      <button
+                        onClick={() => makeAdminHandler(user.email)}
+                        className="btn btn-active btn-sm btn-accent"
+                      >
+                        Make Admin
+                      </button>
+                    )}
+                  </td>
+                  <td className="py-1">
+                    {user.role === 'admin' ? (
+                      <button
+                        disabled
+                        className="btn btn-active btn-sm bg-red-400 border-0"
+                      >
+                        Delete
+                      </button>
+                    ) : (
+                      <button className="btn btn-active btn-sm bg-red-400 border-0">
+                        Delete
+                      </button>
+                    )}
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <p className="text-center text-lg text-rose-600">
+                Happened wrong! Please login again
+              </p>
+            )}
           </tbody>
         </table>
       </div>

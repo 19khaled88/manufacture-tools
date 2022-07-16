@@ -25,21 +25,27 @@ const Tool = ({ product, index }) => {
   } = product
   return (
     <>
-      <div className="card lg:max-w-lg bg-base-100 shadow-xl">
+      <div className="card lg:max-w-md bg-base-100 shadow-xl">
         <figure>
-          <img className="lg:w-full" src={product_image} alt="Shoes" />
+          <img
+            className="lg:w-full lg:h-56 h-80 w-full"
+            src={product_image}
+            alt={product_image}
+          />
         </figure>
-        <div className="card-body">
+        <div className="card-body pt-2 pb-4">
           <h2 className="card-title">{product_name}</h2>
           <p className="text-justify">{product_desc}</p>
           <div className="flex flex-row justify-between">
-            <div className="card-actions justify-start">
-              <div className="badge badge-outline">
+            <div className="flex-1 card-actions justify-start">
+              <div className="badge badge-outline w-28">
                 Price :
-                <span className="text-cyan-500 text-lg">{product_price}</span>
+                <span className="text-cyan-500 text-lg py-0">
+                  {product_price}
+                </span>
               </div>
             </div>
-            <div className="card-actions justify-end">
+            <div className="flex-2 card-actions justify-end">
               <div className="badge badge-outline">
                 Stock :
                 <span className="text-rose-500 text-lg">{product_stock}</span>
@@ -52,7 +58,7 @@ const Tool = ({ product, index }) => {
               </div>
             </div>
           </div>
-          <div className="mt-4 flex  justify-end">
+          <div className="mt-1 flex  justify-end">
             <button
               className="btn btn-sm btn-accent w-1/3"
               onClick={() =>
