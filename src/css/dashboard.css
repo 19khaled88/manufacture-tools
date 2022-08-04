@@ -1,0 +1,22 @@
+.border-2 > a {
+  padding: 5px;
+}
+.menu {
+  width: 170px;
+}
+.menu > li > a {
+  padding: 2px;
+}
+
+.navover {
+  z-index: 0;
+  position: relative;
+}
+.w-72 {
+}
+.px-8 {
+  border: none;
+}
+.mainbody {
+  position: absolute;
+}

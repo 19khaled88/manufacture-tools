@@ -16,6 +16,9 @@ const Users = () => {
   if (isLoading) {
     return <Loading></Loading>
   }
+  if (users.message === 'Forbidden access') {
+    localStorage.removeItem('webToken')
+  }
 
   const makeAdminHandler = (email) => {
     fetch(`https://evening-wildwood-96784.herokuapp.com/admin/${email}`, {

@@ -3,6 +3,7 @@ import { Link, Outlet } from 'react-router-dom'
 import useAdmin from '../CustorHook/useAdmin'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import auth from '../DB/firebase.init'
+import '../../css/dashboard.css'
 const Dashboard1 = () => {
   const [user] = useAuthState(auth)
 
@@ -13,7 +14,7 @@ const Dashboard1 = () => {
       <div className="drawer">
         <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col">
-          <div className="w-full navbar  bg-base-300">
+          <div className="w-full navover navbar  bg-base-300">
             <div className="flex-none lg:hidden">
               <label htmlFor="my-drawer-3" className="btn btn-square btn-ghost">
                 <svg
@@ -31,7 +32,7 @@ const Dashboard1 = () => {
                 </svg>
               </label>
             </div>
-            <div className="flex-1 px-2 mx-2">Navbar Title</div>
+            <div className="flex-1 px-2 mx-2">Navbar Area</div>
             <div className="flex-1">Dashboard</div>
           </div>
           <div className="px-8 content-center flex flex-col lg:hidden">
@@ -84,7 +85,7 @@ const Dashboard1 = () => {
           </ul>
           <div
             style={{ overflow: 'auto' }}
-            className="container mx-auto hidden lg:flex lg:flex-row w-full pt-20 lg:inline"
+            className="container mainbody mx-auto hidden lg:flex lg:flex-row w-full pt-20 lg:inline"
           >
             <div className="w-72">
               <ul className="menu flex  flex-col">

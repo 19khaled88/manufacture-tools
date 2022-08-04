@@ -4,6 +4,7 @@ import {
   useSignInWithEmailAndPassword,
 } from 'react-firebase-hooks/auth'
 import auth from '../DB/firebase.init'
+import '../../css//profile.css'
 const MyProfile = () => {
   const [profileData, setProfileData] = useState('')
   const [user] = useAuthState(auth)
@@ -51,7 +52,7 @@ const MyProfile = () => {
   return (
     <div>
       <p className="text-2xl">My Profiles</p>
-      <div className="flex flex-col lg:flex-row">
+      <div className="flex flex-col lg:flex-row profile-view">
         <div className="flex flex-col">
           <div className="overflow-x-auto">
             <table className="table w-full">
@@ -106,22 +107,26 @@ const MyProfile = () => {
                   ref={education}
                   type="text"
                   placeholder="Your Education"
+                  defaultValue={eduRef}
                   className="input input-bordered input-primary w-full max-w-xs"
                 />
                 <input
                   ref={location}
                   type="text"
+                  defaultValue={locRef}
                   placeholder="Phone Number"
                   className="input input-bordered input-primary w-full max-w-xs"
                 />
                 <input
                   ref={phone}
+                  defaultValue={phoRef}
                   type="tel"
                   placeholder="Location"
                   className="input input-bordered input-primary w-full max-w-xs"
                 />
                 <input
                   ref={linkedin}
+                  defaultValue={linRef}
                   type="text"
                   placeholder="LinkedIn Profile"
                   className="input input-bordered input-primary w-full max-w-xs"

@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import Google from './Google'
 import Login from './Login'
 import Signup from './Signup'
+import '../../css/register.css'
 const Register = () => {
   const [state, setState] = useState('login')
   let navigate = useNavigate()
@@ -16,7 +17,7 @@ const Register = () => {
   }
   return (
     <>
-      <div className="flex justify-center items-center min-h-screen pt-[-50]">
+      <div className="flex justify-center items-center auth-card">
         <div className="card bg-base-100 shadow-xl">
           <div className="card-body flex flex-col justify-center items-center">
             {state === 'login' ? (

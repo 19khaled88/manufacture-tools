@@ -16,6 +16,7 @@ export const Navbar = ({ fixed }) => {
     localStorage.removeItem('webToken')
     navigate('/register')
   }
+
   return (
     <>
       <nav className="relative flex flex-wrap items-center justify-between px-2 py-1 bg-emerald-500">
